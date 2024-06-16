@@ -20,6 +20,7 @@ return new class extends Migration
             $table-> string('description');
             $table-> string('company_name');
             $table-> string('location');
+            $table->string('qualification');
             $table->timestamps();
         });
     }

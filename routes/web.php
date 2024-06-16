@@ -22,4 +22,4 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/jobs',[JobsController::class, 'index'])->name('jobs');
+Route::get('/jobs',[JobsController::class, 'index'])->name('jobs'); 
