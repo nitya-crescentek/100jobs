@@ -20,7 +20,7 @@
         </div>
     </div> --}}
 
-    <section class="section-0 lazy d-flex bg-image-style dark align-items-center "   class="" data-bg="assets/images/banner5.jpg">
+    <section class="section-0 lazy d-flex bg-image-style dark align-items-center "   class="" data-bg="storage/images/banner5.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-xl-8">
