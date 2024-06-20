@@ -13,6 +13,7 @@
 
     <!--Load CSS -->
     @vite(['resources/css/style.css'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!--Load JS -->
     @vite(['resources/js/jquery-3.6.0.min.js'])
