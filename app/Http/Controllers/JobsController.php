@@ -17,7 +17,7 @@ class JobsController extends Controller
         $jobs=Job::all();
         // $jobs = DB::select("Select * from jobs");
         // dd($jobs);
-        return view('jobs', ['jobs' => $jobs]);
+        return view('jobs/index', ['jobs' => $jobs]);
     }
 
     /**
