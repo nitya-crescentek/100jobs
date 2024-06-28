@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->bigInteger('contact');
-            $table->string('city');
+            $table->string('city')->nullable();
             $table->string('country');
             $table->string('resume');
             $table->timestamps();
