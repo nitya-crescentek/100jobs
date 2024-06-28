@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('education', function (Blueprint $table) {
+        Schema::create('applied_jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('college');
-            $table->string('degree');
-            $table->string('grades');
-            $table->string('start');
-            $table->string('end');
-            $table->string('skills_learned')->nullable();
             $table->integer('user_id');
+            $table->integer('job_id');
             $table->timestamps();
         });
     }
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('education');
+        Schema::dropIfExists('applied_jobs');
     }
 };

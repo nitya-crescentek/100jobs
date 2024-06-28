@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('start');
             $table->string('end');
             $table->string('skills_gained')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
