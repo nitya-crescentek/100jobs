@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="text-center">Welcome! {{ Auth::user()->name }}</h1>
+{{-- <h2 class="text-center">Welcome! {{ Auth::user()->name }}</h2> --}}
 
 <section class="section-5 bg-2">
     <div class="container py-5">
@@ -10,13 +10,13 @@
             <div class="col">
                 <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                         <li class="breadcrumb-item active">Account Settings</li>
                     </ol>
                 </nav>
             </div>
         </div>
-        <div class="row">
+        <div class="row"> 
 
             @include('layouts.partials.profile_sidebar')
 
@@ -26,19 +26,31 @@
                         <h3 class="fs-4 mb-1">My Profile</h3>
                         <div class="mb-4">
                             <label for="" class="mb-2">Name*</label>
-                            <input type="text" placeholder="Enter Name" class="form-control" value="">
+                            <input type="text" placeholder="Enter Name" class="form-control" value="{{ Auth::user()->name }}">
                         </div>
                         <div class="mb-4">
                             <label for="" class="mb-2">Email*</label>
-                            <input type="text" placeholder="Enter Email" class="form-control">
+                            <input type="email" placeholder="Enter Email" class="form-control" value="{{ Auth::user()->email }}">
                         </div>
                         <div class="mb-4">
-                            <label for="" class="mb-2">Designation*</label>
-                            <input type="text" placeholder="Designation" class="form-control">
+                            <label for="" class="mb-2">Contact No*</label>
+                            <input type="number" placeholder="Contact" class="form-control" value="{{ Auth::user()->contact }}">
                         </div>
                         <div class="mb-4">
-                            <label for="" class="mb-2">Mobile*</label>
-                            <input type="text" placeholder="Mobile" class="form-control">
+                            <label for="" class="mb-2">Bio*</label>
+                            <input type="text" placeholder="bio" class="form-control" value="{{ Auth::user()->bio }}">
+                        </div>
+                        <div class="mb-4">
+                            <label for="" class="mb-2">City*</label>
+                            <input type="text" placeholder="City" class="form-control" value="{{ Auth::user()->city }}">
+                        </div>
+                        <div class="mb-4">
+                            <label for="" class="mb-2">Country*</label>
+                            <input type="text" placeholder="Country" class="form-control" value="{{ Auth::user()->country }}">
+                        </div>
+                        <div class="mb-4">
+                            <label for="" class="mb-2">Resume*</label>
+                            <input type="text" placeholder="Resume" class="form-control" value="{{ Auth::user()->resume }}">
                         </div>                        
                     </div>
                     <div class="card-footer  p-4">
@@ -70,28 +82,8 @@
         </div>
     </div>
 </section>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title pb-0" id="exampleModalLabel">Change Profile Picture</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Profile Image</label>
-                <input type="file" class="form-control" id="image"  name="image">
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary mx-3">Update</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-            
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
+@include('layouts.partials.user_avatar')
+
 
 @endsection

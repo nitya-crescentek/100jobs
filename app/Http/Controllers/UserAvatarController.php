@@ -1,20 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
-use App\Models\Job;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
-class UserController extends Controller
+
+class UserAvatarController extends Controller
 {
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'avatar' => ['required', 'image']
+    //     ]);
+    // }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $user=  Auth::user()->name; 
-        return view('user/profile');
+        //
     }
 
     /**
@@ -54,7 +62,16 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request);
+        // $request->validate();
+        // $path = Storage::disk('public')->put('avatars',$request->file('avatar'));
+        // $path=$request->file('avatar')->store('avatars','public');
+
+        // if($oldAvatar = $request->user()->avatar){
+        //     Storage::disk('public')->delete($oldAvatar);
+        // }
+
+        // auth()->user()->update(['avatar'=>$path]);
     }
 
     /**

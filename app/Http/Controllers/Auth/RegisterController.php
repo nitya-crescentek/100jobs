@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'contact' => ['required', 'integer'],
+            'bio' => ['required', 'string', 'max:100'],
             'resume' => ['required', 'string'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -69,6 +70,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'contact' => $data['contact'],
+            'bio' => $data['bio'],
             'city' => $data['city'],
             'country' => $data['country'],
             'resume' => $data['resume'],

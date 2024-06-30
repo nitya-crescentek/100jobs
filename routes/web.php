@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\JobsController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\UserProfileController;
 use App\Models\User;
 use App\Models\Job;
@@ -36,3 +36,4 @@ Route::get('/my-jobs',[UserProfileController::class,'my_jobs'])->name('my-jobs')
 Route::get('/applied-jobs',[UserProfileController::class,'applied_jobs'])->name('applied-jobs');
 Route::get('/saved-jobs',[UserProfileController::class,'saved_jobs'])->name('saved-jobs');
 
+Route::patch('/profile/avatar', [UserAvatarController::class, 'update'])->name('profile-avatar');
