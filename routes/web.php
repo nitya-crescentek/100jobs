@@ -29,11 +29,15 @@ Auth::routes();
 Route::get('/jobs',[JobsController::class, 'index'])->name('jobs'); 
 
 
+Route::group(['middleware' => 'auth'], function(){
 
-Route::get('/profile',[UserProfileController::class,'profile'])->name('profile');
-Route::get('/post-job',[UserProfileController::class,'post_job'])->name('post-job');
-Route::get('/my-jobs',[UserProfileController::class,'my_jobs'])->name('my-jobs');
-Route::get('/applied-jobs',[UserProfileController::class,'applied_jobs'])->name('applied-jobs');
-Route::get('/saved-jobs',[UserProfileController::class,'saved_jobs'])->name('saved-jobs');
+    Route::get('/profile',[UserProfileController::class,'profile'])->name('profile');
+    Route::get('/post-job',[UserProfileController::class,'post_job'])->name('post-job');
+    Route::get('/my-jobs',[UserProfileController::class,'my_jobs'])->name('my-jobs');
+    Route::get('/applied-jobs',[UserProfileController::class,'applied_jobs'])->name('applied-jobs');
+    Route::get('/saved-jobs',[UserProfileController::class,'saved_jobs'])->name('saved-jobs');
 
-Route::patch('/profile/avatar', [UserAvatarController::class, 'update'])->name('profile-avatar');
+
+    Route::patch('/profile-avatar', [UserAvatarController::class, 'update'])->name('profile-avatar');
+
+});
