@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EducationController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UpdateProfileController;
 use App\Http\Controllers\UserAvatarController;
@@ -43,5 +44,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     Route::put('/update-profile',[UpdateProfileController::class, 'update'])->name('update-profile');
+
+    Route::post('/add-education',[EducationController::class, 'store'])->name('add-education');
 
 });

@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('education', function (Blueprint $table) {
+        Schema::create('experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('college');
-            $table->string('degree');
-            $table->string('grades');
+            $table->string('company');
+            $table->string('role');
             $table->string('start');
             $table->string('end');
-            $table->string('skills_learned')->nullable();
-            $table->integer('user_id');
+            $table->string('skills_gained')->nullable();
+            $table->unsignedBigInteger('user_id'); // Define the user_id column as unsignedBigInteger
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('education');
+        Schema::dropIfExists('experiences');
     }
 };

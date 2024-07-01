@@ -21,7 +21,8 @@ return new class extends Migration
             $table-> integer('salary')->nullable();
             $table-> string('skills')->nullable();
             $table->string('qualification')->nullable();
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id'); // Define the user_id column as unsignedBigInteger
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

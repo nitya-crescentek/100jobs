@@ -70,6 +70,101 @@
                     </form>
                 </div>
 
+                <!-- Education Section -->
+                <div class="card border-0 shadow mb-4">
+                    <form action="{{route('add-education')}}" method="POST">
+
+                        @csrf
+                        @method('POST')
+                        <div class="card-body p-4">
+                            @if ($user->educations->isNotEmpty())
+                                <h3 class="fs-4">Education History</h3>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>College</th>
+                                            <th>Degree</th>
+                                            <th>Grade</th>
+                                            <th>Skills Learned</th>
+                                            <th>Start</th>
+                                            <th>End</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($user->educations as $education)
+                                            <tr>
+                                                <td>{{ $education->college }}</td>
+                                                <td>{{ $education->degree }}</td>
+                                                <td>{{ $education->grades }}</td>
+                                                <td>{{ $education->skills_learned }}</td>
+                                                <td>{{ $education->start }}</td>
+                                                <td>{{ $education->end }}</td>
+                                                <td><a href="#">Edit</a></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <p>No education history found.</p>
+                            @endif
+                            <h3 class="fs-4 mb-1 mt-3">Add Education</h3>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="college" class="mb-2">College*</label>
+                                        <input type="text" name="college" id="college" placeholder="Enter College" class="form-control" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="degree" class="mb-2">Degree*</label>
+                                        <input type="text" name="degree" id="degree" placeholder="Enter Degree" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="grades" class="mb-2">Grades*</label>
+                                        <input type="text" name="grades" id="grades" placeholder="Enter Grades" class="form-control" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="skills_learned" class="mb-2">Skills Learned</label>
+                                        <input type="text" name="skills_learned" id="skills_learned" placeholder="Enter Skills Learned" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="end" class="mb-2">End*</label>
+                                        <input type="date" name="end" id="end" placeholder="Enter End Year" class="form-control" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="start" class="mb-2">Start*</label>
+                                        <input type="date" name="start" id="start" placeholder="Enter Start Year" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer p-4">
+                            <input type="hidden" name="user_id" value="{{ $user->id}}">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                
+
                 <div class="card border-0 shadow mb-4">
                     <div class="card-body p-4">
                         <h3 class="fs-4 mb-1">Change Password</h3>
@@ -90,9 +185,11 @@
                         <button type="button" class="btn btn-primary">Update</button>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+
 </section>
 
 @include('layouts.partials.user_avatar')

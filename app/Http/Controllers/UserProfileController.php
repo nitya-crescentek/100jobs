@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Http\Request;
 
@@ -9,9 +10,9 @@ class UserProfileController extends Controller
 {
     public function profile()
     {
-        $user=  Auth::user(); 
-        // dd($user);
-        return view('user/profile', ['user' => $user]);
+        $user = Auth::user();
+        $user->educations;
+        return view('user.profile', compact('user'));
     }
 
     public function post_job()
