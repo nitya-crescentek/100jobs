@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UpdateProfileController;
@@ -46,5 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/update-profile',[UpdateProfileController::class, 'update'])->name('update-profile');
 
     Route::post('/add-education',[EducationController::class, 'store'])->name('add-education');
+
+    Route::post('/add-certification',[CertificationController::class, 'store'])->name('add-certification');
 
 });

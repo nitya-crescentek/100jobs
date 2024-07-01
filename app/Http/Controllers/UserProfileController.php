@@ -12,6 +12,7 @@ class UserProfileController extends Controller
     {
         $user = Auth::user();
         $user->educations;
+        $user->certifications;
         return view('user.profile', compact('user'));
     }
 
