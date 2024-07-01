@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\UpdateProfileController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\UserProfileController;
 use App\Models\User;
@@ -39,5 +40,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     Route::patch('/profile-avatar', [UserAvatarController::class, 'update'])->name('profile-avatar');
+
+
+    Route::put('/update-profile',[UpdateProfileController::class, 'update'])->name('update-profile');
 
 });
