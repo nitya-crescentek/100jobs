@@ -246,7 +246,91 @@
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
-                </div>         
+                </div>     
+                
+                <!-- Experience Section -->
+                <div class="card border-0 shadow mb-4">
+                    <form action="{{route('add-experience')}}" method="POST">
+
+                        @csrf
+                        @method('POST')
+                        <div class="card-body p-4">
+                            
+                            <h3 class="fs-4">Experience</h3>
+                            @if ($user->experiences->isNotEmpty())
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Company</th>
+                                            <th>Role</th>
+                                            <th>Start</th>
+                                            <th>End</th>
+                                            <th>Skills</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($user->experiences as $experience)
+                                            <tr>
+                                                <td>{{ $experience->company }}</td>
+                                                <td>{{ $experience->role }}</td>
+                                                <td>{{ $experience->start }}</td>
+                                                <td>{{ $experience->end }}</td>
+                                                <td>{{ $experience->skills_gained }}</td>
+                                                <td><a href="#">Edit</a></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <p>No certifications found.</p>
+                            @endif
+                            <h3 class="fs-4 mb-1 mt-3">Add Experience</h3>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="name" class="mb-2">Company*</label>
+                                        <input type="text" name="company" id="name" placeholder="Enter Company Name" class="form-control" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="role" class="mb-2">Role*</label>
+                                        <input type="text" name="role" id="role" placeholder="Enter Your Role" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="start" class="mb-2">Start*</label>
+                                        <input type="date" name="start" id="start" placeholder="Enter Start Date" class="form-control" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="end" class="mb-2">Last Date (leave if currently working)</label>
+                                        <input type="date" name="end" id="end" class="form-control" value="">
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <label for="skills_gained" class="mb-2">Skills Gained*</label>
+                                        <input type="text" name="skills_gained" id="skills_gained" placeholder="Enter Skills" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer p-4">
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
 
                 <div class="card border-0 shadow mb-4">
                     <div class="card-body p-4">

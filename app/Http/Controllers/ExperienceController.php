@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Certifications;
+use App\Models\Experiences;
 use Illuminate\Http\Request;
 
-class CertificationController extends Controller
+class ExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,12 +30,12 @@ class CertificationController extends Controller
     {
         $data = $request->all();
         // dd($data);
-        $certification = Certifications::create([
-                'name' => $data['name'],
-                'institution' => $data['institution'],
-                'grade' => $data['grade'],
-                'year' => $data['year'],
-                'duration' => $data['duration'],
+        $education = Experiences::create([
+                'company' => $data['company'],
+                'role' => $data['role'],
+                'start' => $data['start'],
+                'end' => $data['end'] ?? 'Working',
+                'skills_gained' => $data['skills_gained'],
                 'user_id' => $data['user_id']
             ]);
 
