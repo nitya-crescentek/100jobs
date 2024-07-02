@@ -20,7 +20,7 @@ class Experiences extends Model
 
 
     /**
-     * Get the user that owns the education.
+     * Get the user that owns the exp.
      */
     public function user()
     {

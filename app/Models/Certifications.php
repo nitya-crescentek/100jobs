@@ -20,7 +20,7 @@ class Certifications extends Model
 
 
     /**
-     * Get the user that owns the education.
+     * Get the user that owns the cer.
      */
     public function user()
     {

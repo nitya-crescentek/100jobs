@@ -16,7 +16,7 @@ class JobsController extends Controller
         // $jobs=Job::where('id', '=', 2)->get();
         $jobs=Job::all();
         // $jobs = DB::select("Select * from jobs");
-        // dd($jobs);
+        dd($jobs);
         return view('jobs/index', ['jobs' => $jobs]);
     }
 
@@ -33,7 +33,23 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->all();
+
+        $job = Job::create([
+            'role' => $data['role'],
+            'company' => $data['company'],
+            'company_website' => $data['company_website'],
+            'location' => $data['location'],
+            'job_type' => $data['job_type'],
+            'category' => $data['category'],
+            'description' => $data['description'],
+            'salary' => $data['salary'],
+            'skills' => $data['skills'],
+            'qualification' => $data['qualification'],
+            'user_id' => $data['user_id'],
+        ]);
+
+        return redirect(route('profile'));
     }
 
     /**

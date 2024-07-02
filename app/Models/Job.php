@@ -10,14 +10,25 @@ class Job extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'role',
+        'company',
+        'company_website',
+        'location',
+        'job_type',
         'category',
-        'salary',
-        'type',
         'description',
-        'company_name',
-        'location'
+        'salary',
+        'skills',
+        'qualification',
+        'user_id'
     ];
 
+    /**
+     * Get the user that owns the education.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     
 }

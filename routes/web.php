@@ -53,4 +53,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('/add-experience',[ExperienceController::class, 'store'])->name('add-experience');
 
+
+    Route::post('/create-job',[JobsController::class,'store'])->name('create-job');
+    Route::get('/my-jobs', [JobsController::class,'index'])->name('my-jobs');
+
 });
