@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Job; 
 
 use Illuminate\Http\Request;
@@ -15,9 +16,8 @@ class JobsController extends Controller
     {
         // $jobs=Job::where('id', '=', 2)->get();
         $jobs=Job::all();
-        // $jobs = DB::select("Select * from jobs");
-        dd($jobs);
-        return view('jobs/index', ['jobs' => $jobs]);
+        
+
     }
 
     /**

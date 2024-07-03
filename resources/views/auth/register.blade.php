@@ -57,7 +57,7 @@
                             <label for="contact" class="col-md-4 col-form-label text-md-end">{{ __('Contact Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="contact" type="text" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" required autocomplete="contact">
+                                <input id="contact" type="tel" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" required autocomplete="contact">
 
                                 @error('contact')
                                     <span class="invalid-feedback" role="alert">
@@ -95,11 +95,11 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        {{-- <div class="row mb-3">
                             <label for="resume" class="col-md-4 col-form-label text-md-end">{{ __('Resume') }}</label>
 
                             <div class="col-md-6">
-                                <input id="resume" type="text" class="form-control @error('resume') is-invalid @enderror" name="resume" value="{{ old('resume') }}" required autocomplete="resume">
+                                <input id="resume" type="file" class="form-control @error('resume') is-invalid @enderror" name="resume" value="{{ old('resume') }}" required autocomplete="resume">
 
                                 @error('resume')
                                     <span class="invalid-feedback" role="alert">
@@ -107,7 +107,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>

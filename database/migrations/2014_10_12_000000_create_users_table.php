@@ -23,7 +23,7 @@ return new class extends Migration
             $table->bigInteger('contact');
             $table->string('city')->nullable();
             $table->string('country');
-            $table->string('resume');
+            $table->string('resume')->nullable();
             $table->timestamps();
         });
     }

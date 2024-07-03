@@ -30,7 +30,7 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/jobs',[JobsController::class, 'index'])->name('jobs'); 
+Route::get('/find-jobs',[JobsController::class, 'find_job'])->name('jobs'); 
 
 
 Route::group(['middleware' => 'auth'], function(){
@@ -55,6 +55,5 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     Route::post('/create-job',[JobsController::class,'store'])->name('create-job');
-    Route::get('/my-jobs', [JobsController::class,'index'])->name('my-jobs');
 
 });
