@@ -26,7 +26,7 @@
                 <div class="col-12 col-xl-8">
                     <h1>Find your dream job</h1>
                     <p>Thounsands of jobs available.</p>
-                    <div class="banner-btn mt-5"><a href="#" class="btn btn-primary mb-4 mb-sm-0">Explore Now</a></div>
+                    <div class="banner-btn mt-5"><a href="{{route('jobs')}}" class="btn btn-primary mb-4 mb-sm-0">Explore Now</a></div>
                 </div>
             </div>
         </div>
@@ -67,54 +67,14 @@
         <div class="container">
             <h2>Popular Categories</h2>
             <div class="row pt-5">
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                    <div class="single_catagory">
-                        <a href="jobs.html"><h4 class="pb-2">Design &amp; Creative</h4></a>
-                        <p class="mb-0"> <span>50</span> Available position</p>
+                @foreach($jobs as $job)
+                    <div class="col-lg-4 col-xl-3 col-md-6">                
+                        <div class="single_catagory">
+                            <a href="jobs.html"><h4 class="pb-2">{{$job->category}}</h4></a>
+                            <p class="mb-0"> <span>50</span> Available position</p>
+                        </div>                 
                     </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                    <div class="single_catagory">
-                        <a href="jobs.html"><h4 class="pb-2">Finance</h4></a>
-                        <p class="mb-0"> <span>50</span> Available position</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                    <div class="single_catagory">
-                        <a href="jobs.html"><h4 class="pb-2">Banking</h4></a>
-                        <p class="mb-0"> <span>50</span> Available position</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                    <div class="single_catagory">
-                        <a href="jobs.html"><h4 class="pb-2">Data Science</h4></a>
-                        <p class="mb-0"> <span>50</span> Available position</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                    <div class="single_catagory">
-                        <a href="jobs.html"><h4 class="pb-2">Marketing</h4></a>
-                        <p class="mb-0"> <span>50</span> Available position</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                    <div class="single_catagory">
-                        <a href="jobs.html"><h4 class="pb-2">Digital Marketing</h4></a>
-                        <p class="mb-0"> <span>50</span> Available position</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                    <div class="single_catagory">
-                        <a href="jobs.html"><h4 class="pb-2">Digital Marketing</h4></a>
-                        <p class="mb-0"> <span>50</span> Available position</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                    <div class="single_catagory">
-                        <a href="jobs.html"><h4 class="pb-2">Digital Marketing</h4></a>
-                        <p class="mb-0"> <span>50</span> Available position</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -126,163 +86,34 @@
                 <div class="job_listing_area">                    
                     <div class="job_lists">
                         <div class="row">
+                            @foreach($jobs as $job)
                             <div class="col-md-4">
                                 <div class="card border-0 p-3 shadow mb-4">
                                     <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
+                                        <h3 class="border-0 fs-5 pb-2 mb-0">{{$job->role}}</h3>
+                                        <p>{{ Str::words($job->description, 15, '...') }}</p>
                                         <div class="bg-light p-3 border">
                                             <p class="mb-0">
                                                 <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
+                                                <span class="ps-1">{{$job->location}}</span>
                                             </p>
                                             <p class="mb-0">
                                                 <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
+                                                <span class="ps-1">{{$job->job_type}}</span>
                                             </p>
                                             <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
+                                                <span class="fw-bolder"><i class="fa fa-inr"></i></span>
+                                                <span class="ps-1">{{$job->salary}}</span>
                                             </p>
                                         </div>
-    
+
                                         <div class="d-grid mt-3">
                                             <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        @endforeach 
                                                      
                         </div>
                     </div>
@@ -298,193 +129,39 @@
                 <div class="job_listing_area">                    
                     <div class="job_lists">
                         <div class="row">
+                            @foreach($jobs as $job)
                             <div class="col-md-4">
                                 <div class="card border-0 p-3 shadow mb-4">
                                     <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
+                                        <h3 class="border-0 fs-5 pb-2 mb-0">{{$job->role}}</h3>
+                                        <p>{{ Str::words($job->description, 15, '...') }}</p>
                                         <div class="bg-light p-3 border">
                                             <p class="mb-0">
                                                 <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
+                                                <span class="ps-1">{{$job->location}}</span>
                                             </p>
                                             <p class="mb-0">
                                                 <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
+                                                <span class="ps-1">{{$job->job_type}}</span>
                                             </p>
                                             <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
+                                                <span class="fw-bolder"><i class="fa fa-inr"></i></span>
+                                                <span class="ps-1">{{$job->salary}}</span>
                                             </p>
                                         </div>
-    
+
                                         <div class="d-grid mt-3">
                                             <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">Web Developer</h3>
-                                        <p>We are in need of a Web Developer for our company.</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">Noida</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">Remote</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">2-3 Lacs PA</span>
-                                            </p>
-                                        </div>
-    
-                                        <div class="d-grid mt-3">
-                                            <a href="job-detail.html" class="btn btn-primary btn-lg ">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                                                     
+                            @endforeach                                                   
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title pb-0" id="exampleModalLabel">Change Profile Picture</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Profile Image</label>
-                    <input type="file" class="form-control" id="image"  name="image">
-                </div>
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary mx-3">Update</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-                
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
+   
 @endsection

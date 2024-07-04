@@ -30,9 +30,10 @@ class UserProfileController extends Controller
     {
         $user=  Auth::user(); 
         // dd($user->id);
-        $jobs=Job::where('user_id', '=', $user->id)->get();
+        // $jobs=Job::where('user_id', '=', $user->id)->get();
         // dd($jobs);
-        return view('user/my_jobs', ['user' => $user, 'jobs' => $jobs]);
+        $user->jobs;
+        return view('user/my_jobs', compact('user'));
     }
 
     public function applied_jobs()

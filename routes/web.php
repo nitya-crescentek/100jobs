@@ -3,6 +3,7 @@
 use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UpdateProfileController;
 use App\Http\Controllers\UserAvatarController;
@@ -23,14 +24,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 
-Route::get('/find-jobs',[JobsController::class, 'find_job'])->name('jobs'); 
+Route::get('/all-jobs',[JobsController::class, 'index'])->name('jobs'); 
 
 
 Route::group(['middleware' => 'auth'], function(){

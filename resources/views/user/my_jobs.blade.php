@@ -43,7 +43,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="border-0">
-                                    @foreach($jobs as $job)
+                                    @foreach($user->jobs as $job)
                                         <tr class="active">
                                             <td>
                                                 <div class="job-name fw-500">{{$job->role}}</div>

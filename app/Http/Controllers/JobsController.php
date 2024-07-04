@@ -15,9 +15,9 @@ class JobsController extends Controller
     public function index()
     {
         // $jobs=Job::where('id', '=', 2)->get();
-        $jobs=Job::all();
-        
-
+        $jobs=Job::all(); 
+        // dd($jobs);
+        return view('jobs/index', ['jobs' => $jobs]);
     }
 
     /**
