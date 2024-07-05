@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3">
     <div class="container">
-        <a class="navbar-brand company-logo" href="{{url('/')}}"><img src="storage/images/100jobs logo.png" style="width:200px"></a>
+        <a class="navbar-brand company-logo" href="{{url('/')}}"><img src="{{route('home')}}/storage/images/100jobs logo.png" style="width:200px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

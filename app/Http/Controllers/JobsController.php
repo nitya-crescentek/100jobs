@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Job; 
+use App\Models\User;
+
 
 use Illuminate\Http\Request;
 
@@ -57,7 +59,12 @@ class JobsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $job = Job::find($id);
+        // dd($job);
+        $employer = User::find($job->user_id);
+        // dd($employer);
+
+        return view('jobs/single_job',['job' => $job, 'employer' => $employer]);
     }
 
     /**

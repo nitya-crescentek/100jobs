@@ -63,7 +63,7 @@
 
                             <div class="row">
                                 <div class="mb-4 col-md-6">
-                                    <label for="" class="mb-2">Salary</label>
+                                    <label for="" class="mb-2">Salary (monthly)</label>
                                     <input type="text" placeholder="Salary" id="salary" name="salary" class="form-control">
                                 </div>
 

@@ -29,7 +29,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Auth::routes();
 
 
-Route::get('/all-jobs',[JobsController::class, 'index'])->name('jobs'); 
+Route::get('/all-jobs',[JobsController::class, 'index'])->name('jobs');
+Route::get('/job/{id}',[JobsController::class, 'show'])->name('single-job'); 
 
 
 Route::group(['middleware' => 'auth'], function(){
