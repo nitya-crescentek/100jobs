@@ -69,7 +69,7 @@
                         <div class="border-bottom"></div>
                         <div class="pt-3 text-end">
                             <a href="#" class="btn btn-secondary">Save</a>
-                            <a href="#" class="btn btn-primary">Apply</a>
+                            <button data-bs-toggle="modal" data-bs-target="#apply-for-job" type="button" class="btn btn-primary">Apply</button>
                         </div>
                     </div>
                 </div>
@@ -107,5 +107,7 @@
         </div>
     </div>
 </section>
+
+@include('components.apply_for_job')
 
 @endsection
