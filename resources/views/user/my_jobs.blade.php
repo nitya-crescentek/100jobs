@@ -39,6 +39,7 @@
                                         <th scope="col">Title</th>
                                         <th scope="col">Company</th>
                                         <th scope="col">Location</th>
+                                        <th scope="col">Candidates Applied</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -50,6 +51,7 @@
                                             </td>
                                             <td>{{$job->company}}</td>
                                             <td>{{$job->location}}</td>
+                                            <td>total</td>
                                             
                                             <td>
                                                 <div class="action-dots">

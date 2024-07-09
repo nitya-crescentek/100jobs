@@ -16,6 +16,9 @@ class UserProfileController extends Controller
         $user->educations;
         $user->certifications;
         $user->experiences;
+        $user->applied_jobs;
+        // dd($user->applied_jobs);
+        // dd(Job::find($job->job_id));
         return view('user.profile', compact('user'));
     }
 

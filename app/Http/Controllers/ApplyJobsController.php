@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ApplyJobsController extends Controller
 {
+    public function index(){
+        $user = Auth::user();
+
+        $user->applied_jobs;
+        dd($user);
+    }
+
     public function apply(Request $request)
     {
         $job_id = $request['job_id'];
