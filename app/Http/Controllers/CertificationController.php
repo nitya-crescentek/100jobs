@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Certifications;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class CertificationController extends Controller
 {
@@ -20,7 +22,9 @@ class CertificationController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $user->certifications;
+        return view('certification.add', compact('user'));
     }
 
     /**
@@ -39,7 +43,7 @@ class CertificationController extends Controller
                 'user_id' => $data['user_id']
             ]);
 
-        return redirect(route('profile'));
+        return back()->with('success', 'Certification added');
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Education;
 use App\Models\Educations;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class EducationController extends Controller
@@ -21,7 +22,9 @@ class EducationController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $user->educations;
+        return view('education.add', compact('user'));
     }
 
     /**
@@ -41,7 +44,7 @@ class EducationController extends Controller
                 'user_id' => $data['user_id']
             ]);
 
-        return redirect(route('profile'));
+        return back()->with('success', 'Education Added.');
 
     }
 
@@ -56,9 +59,9 @@ class EducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+
     }
 
     /**

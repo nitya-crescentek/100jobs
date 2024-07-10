@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Experiences;
 use Illuminate\Http\Request;
@@ -20,7 +21,10 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        //
+        
+        $user = Auth::user();
+        $user->experiences;
+        return view('experience.add', compact('user'));
     }
 
     /**
@@ -39,7 +43,7 @@ class ExperienceController extends Controller
                 'user_id' => $data['user_id']
             ]);
 
-        return redirect(route('profile'));
+        return back()->with('success', 'Experience added');
     }
 
     /**

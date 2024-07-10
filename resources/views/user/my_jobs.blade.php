@@ -51,7 +51,7 @@
                                             </td>
                                             <td>{{$job->company}}</td>
                                             <td>{{$job->location}}</td>
-                                            <td>total</td>
+                                            <td>100 candidates</td>
                                             
                                             <td>
                                                 <div class="action-dots">

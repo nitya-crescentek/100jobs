@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -45,9 +46,10 @@ class UpdateProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        $user = Auth::user(); // Get the currently authenticated user
+        return view('user.profile_edit', ['user' => $user]);
     }
 
     /**
@@ -55,32 +57,37 @@ class UpdateProfileController extends Controller
      */
     public function update(Request $request)
     {
+        $user = auth()->user();
+
         $request->validate([
-            'resume' => 'required|file'
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'contact' => 'required|string|max:15',
+            'bio' => 'required|string|max:1000',
+            'city' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            'resume' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
         ]);
 
-        $path = $request->file('resume')->store('resumes', 'public');
-
-        // dd($path);
-        $user = Auth::user();
-        if ($user->resume) {
-            Storage::disk('public')->delete($user->resume);
+        if ($request->hasFile('resume')) {
+            if ($user->resume) {
+                Storage::delete('public/' . $user->resume);
+            }
+            $path = $request->file('resume')->store('resumes', 'public');
+            $user->resume = $path;
         }
-        
-        $user->update(
-            [
-                'resume' => $path,
-                'name' => $request->name,
-                'email' => $request->email,
-                'contact' => $request->contact,
-                'bio' => $request->bio,
-                'city' => $request->city,
-                'country' => $request->country
 
-            ]
-        );
+        // Update other user details
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->contact = $request->input('contact');
+        $user->bio = $request->input('bio');
+        $user->city = $request->input('city');
+        $user->country = $request->input('country');
 
-        return redirect(route('profile'));
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully.');
 
     }
 
