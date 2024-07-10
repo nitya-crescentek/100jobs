@@ -25,7 +25,7 @@
                     <div class="card-body card-form">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <h3 class="fs-4 mb-1">My Jobs</h3>
+                                <h3 class="fs-4 mb-1">Your Posted Jobs</h3>
                             </div>
                             <div style="margin-top: -10px;">
                                 <a href="post-job.html" class="btn btn-primary">Post a Job</a>

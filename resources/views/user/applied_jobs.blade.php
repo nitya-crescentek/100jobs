@@ -11,7 +11,7 @@
                 <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Jobs Applied</li>
+                        <li class="breadcrumb-item active">Jobs Applied </li>
                     </ol>
                 </nav>
             </div>
@@ -23,7 +23,7 @@
             <div class="col-lg-9">
                 <div class="card border-0 shadow mb-4 p-3">
                     <div class="card-body card-form">
-                        <h3 class="fs-4 mb-1">Jobs Applied</h3>
+                        <h3 class="fs-4 mb-1">Jobs You Applied On</h3>
                         <div class="table-responsive">
                             <table class="table ">
                                 <thead class="bg-light">
@@ -40,6 +40,7 @@
                                     @php
                                         // Fetch the job using the job_id
                                         $job = App\Models\Job::find($get_job->job_id);
+                                        $user = App\Models\User::find($get_job->user_id);
                                     @endphp
                                         <tr class="active">
                                             <td>
@@ -55,8 +56,7 @@
                                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </a>
                                                     <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="{{route('single-job',$job->id)}}"> <i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
-                                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></li>
+                                                        <li><a class="dropdown-item" href="{{ asset('storage/' . $user->resume) }}"> <i class="fa fa-eye" aria-hidden="true"></i> View Resume</a></li>
                                                         <li><a class="dropdown-item" href="#"><i class="fa fa-trash" aria-hidden="true"></i> Remove</a></li>
                                                     </ul>
                                                 </div>
