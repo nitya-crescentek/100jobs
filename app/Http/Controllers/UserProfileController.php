@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Job; 
+use App\Models\AppliedJobs;
 
 
 use Illuminate\Http\Request;
@@ -16,8 +17,11 @@ class UserProfileController extends Controller
         $user->educations;
         $user->certifications;
         $user->experiences;
+        // $user->load(['jobs' => function($query) {
+        //     $query->withCount('appliedJobs');
+        // }]);
+        
         $user->applied_jobs;
-        // dd($user->applied_jobs);
         // dd(Job::find($job->job_id));
         return view('user.profile', compact('user'));
     }
@@ -33,8 +37,9 @@ class UserProfileController extends Controller
     {
         $user=  Auth::user(); 
         // dd($user->id);
-        // $jobs=Job::where('user_id', '=', $user->id)->get();
-        // dd($jobs);
+        // $jobs = AppliedJobs::where('user_id', '=', $user->id)->get();
+        $user->applied_jobs;
+        // dd($user1); 
         $user->jobs;
         return view('user/my_jobs', compact('user'));
     }

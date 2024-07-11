@@ -28,7 +28,7 @@
                                 <h3 class="fs-4 mb-1">Your Posted Jobs</h3>
                             </div>
                             <div style="margin-top: -10px;">
-                                <a href="post-job.html" class="btn btn-primary">Post a Job</a>
+                                <a href="{{route('post-job')}}" class="btn btn-primary">Post a Job</a>
                             </div>
                             
                         </div>
@@ -45,13 +45,17 @@
                                 </thead>
                                 <tbody class="border-0">
                                     @foreach($user->jobs as $job)
+                                        @php
+                                             $count = App\Models\AppliedJobs::where('job_id', $job->job_id)->count();
+                                            // dd($count);
+                                        @endphp
                                         <tr class="active">
                                             <td>
                                                 <div class="job-name fw-500">{{$job->role}}</div>
                                             </td>
                                             <td>{{$job->company}}</td>
                                             <td>{{$job->location}}</td>
-                                            <td>100 candidates</td>
+                                            <td><a href="">{{$count }} Applicants</a></td>
                                             
                                             <td>
                                                 <div class="action-dots">

@@ -83,7 +83,7 @@
                                             <td>{{ $education->skills_learned }}</td>
                                             <td>{{ $education->start }}</td>
                                             <td>{{ $education->end }}</td>
-                                            <td><a href="#">Edit</a></td>
+                                            <td><a href="#">Edit</a> / <a href="#">Delete</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -124,7 +124,7 @@
                                             <td>{{ $certification->grade }}</td>
                                             <td>{{ $certification->year }}</td>
                                             <td>{{ $certification->duration }}</td>
-                                            <td><a href="#">Edit</a></td>
+                                            <td><a href="#">Edit</a> / <a href="#">Delete</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -164,7 +164,7 @@
                                             <td>{{ $experience->start }}</td>
                                             <td>{{ $experience->end }}</td>
                                             <td>{{ $experience->skills_gained }}</td>
-                                            <td><a href="#">Edit</a></td>
+                                            <td><a href="#">Edit</a> / <a href="#">Delete</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

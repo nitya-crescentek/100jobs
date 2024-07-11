@@ -30,5 +30,11 @@ class Job extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function appliedusers()
+    {
+        return $this->belongsToMany(User::class, 'applied_jobs', 'job_id', 'user_id')
+                    ->withTimestamps();
+    }
     
 }
