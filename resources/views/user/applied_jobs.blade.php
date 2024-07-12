@@ -31,7 +31,7 @@
                                         <th scope="col">Role</th>
                                         <th scope="col">Company</th>
                                         <th scope="col">Applied At</th>
-                                        <th scope="col">Resume</th>
+                                        <th scope="col">View Job</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -48,7 +48,7 @@
                                             </td>
                                             <td>{{$job->company}}</td>
                                             <td>{{$job->location}}</td>
-                                            <td><a href="{{ asset('storage/' . $user->resume) }}"> <i class="fa fa-eye" aria-hidden="true"></i> View </a></td>
+                                            <td><a href="{{route('single-job',$job->id)}}"> <i class="fa fa-eye" aria-hidden="true"></i> View Job</a></td>
                                             
                                             <td>
                                                 <div class="action-dots">
@@ -56,7 +56,7 @@
                                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </a>
                                                     <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="{{route('single-job',$job->id)}}"> <i class="fa fa-eye" aria-hidden="true"></i> View Job</a></li>
+                                                        <li><a class="dropdown-item" href="{{ asset('storage/' . $user->resume) }}"> <i class="fa fa-eye" aria-hidden="true"></i> View Resume</a></li>
                                                         <li><a class="dropdown-item" href="#"><i class="fa fa-trash" aria-hidden="true"></i> Remove</a></li>
                                                     </ul>
                                                 </div>

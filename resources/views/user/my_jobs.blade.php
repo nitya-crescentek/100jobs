@@ -46,7 +46,7 @@
                                 <tbody class="border-0">
                                     @foreach($user->jobs as $job)
                                         @php
-                                             $count = App\Models\AppliedJobs::where('job_id', $job->job_id)->count();
+                                             $count = Illuminate\Support\Facades\DB::table('applied_jobs')->where('job_id', $job->id)->count('user_id');
                                             // dd($count);
                                         @endphp
                                         <tr class="active">
@@ -55,7 +55,7 @@
                                             </td>
                                             <td>{{$job->company}}</td>
                                             <td>{{$job->location}}</td>
-                                            <td><a href="">{{$count }} Applicants</a></td>
+                                            <td><a href="">{{$count}} Applicants</a></td>
                                             
                                             <td>
                                                 <div class="action-dots">
