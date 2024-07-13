@@ -9,6 +9,7 @@ use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UpdateProfileController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\CandidatesController;
 use App\Models\User;
 use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
@@ -68,5 +69,8 @@ Route::group(['middleware' => 'auth'], function(){
     //For jobs
     Route::post('/create-job',[JobsController::class,'store'])->name('create-job');
     Route::post('/submit-application',[ApplyJobsController::class,'apply'])->name('submit-job-application');
+
+    //Applicants
+    Route::get('/{jobid}/candidates', [CandidatesController::class,'index'])->name('candidates');
 
 });

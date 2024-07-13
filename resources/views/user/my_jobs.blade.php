@@ -55,7 +55,7 @@
                                             </td>
                                             <td>{{$job->company}}</td>
                                             <td>{{$job->location}}</td>
-                                            <td><a href="">{{$count}} Applicants</a></td>
+                                            <td><a href="{{route('candidates',$job->id)}}">{{$count}} Applicants</a></td>
                                             
                                             <td>
                                                 <div class="action-dots">

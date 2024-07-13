@@ -5,8 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Job; 
 use App\Models\AppliedJobs;
-
-
 use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
