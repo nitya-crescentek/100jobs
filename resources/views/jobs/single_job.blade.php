@@ -25,6 +25,13 @@
                                 <div class="jobs_conetent">
                                     
                                     <h4>{{$job->role}}</h4>
+
+                                    @if(session('message'))
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            {{ session('message') }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    @endif
                                     
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">

@@ -19,6 +19,15 @@ class ApplyJobsController extends Controller
     {
         $job_id = $request['job_id'];
         $user_id = Auth::user()->id;
+
+        $hasApplied = AppliedJobs::where('user_id', $user_id)
+        ->where('job_id', $job_id)
+        ->exists();
+
+        if ($hasApplied) {
+            return back()->with('message', 'You have already applied for this job. You can view your applications in your profile.');
+        }
+        
         // dd($user_id);
         if($request['qualified']=='yes'){
             $applied_to = AppliedJobs::create([
@@ -26,7 +35,7 @@ class ApplyJobsController extends Controller
                 'job_id' => $job_id
             ]);
         }else{
-            return back()->with('Apply to another jobs');
+            return back()->with('message', 'Apply to another jobs');
         }
 
         return back();
