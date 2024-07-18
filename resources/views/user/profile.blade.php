@@ -61,16 +61,14 @@
                 </div>
 
 
+                <!-- Experience Section -->
+                @include('experience.index')
+
                 <!-- Education Section -->
                 @include('education.index') 
 
-
                 <!-- Certifications Section -->
-                @include('certification.index') 
-                
-
-                <!-- Experience Section -->
-                @include('experience.index') 
+                @include('certification.index')  
 
 
                 {{-- <div class="card border-0 shadow mb-4">

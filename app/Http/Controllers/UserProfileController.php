@@ -13,9 +13,9 @@ class UserProfileController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        $user->educations;
-        $user->certifications;
-        $user->experiences;
+        // $user->educations;
+        // $user->certifications;
+        // $user->experiences;
         return view('user.profile', compact('user'));
     }
 
@@ -29,11 +29,6 @@ class UserProfileController extends Controller
     public function my_jobs()
     {
         $user=  Auth::user(); 
-        // dd($user->id);
-        // $jobs = AppliedJobs::where('user_id', '=', $user->id)->get();
-        // $user->applied_on_jobs;
-        
-        $user->jobs;
         return view('user/my_jobs', compact('user'));
     }
 
