@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/create-job',[JobsController::class,'store'])->name('create-job');
     Route::post('/submit-application',[ApplyJobsController::class,'apply'])->name('submit-job-application');
 
+    
     //Applicants
     Route::get('/{jobid}/candidates', [CandidatesController::class,'index'])->name('candidates');
 

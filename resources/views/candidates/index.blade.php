@@ -29,18 +29,14 @@
                 </thead>
                 <tbody class="border-0">
                     @if($candidates  && $candidates->count() > 0)
-                        @foreach($candidates as $candidate)
-                            @php
-                                $applicant = App\Models\User::find($candidate->user_id)
-                                // dd($count);
-                            @endphp
+                        @foreach($candidates as $applicant)
                             <tr class="active">
                                 <td>
                                     <div class="job-name fw-500">{{$applicant->name}}</div>
                                 </td>
                                 <td>{{$applicant->contact}}</td>
                                 <td>{{$applicant->email}}</td>
-                                <td>Skills</td>
+                                <td>{{$applicant->key_skills}}</td>
                                 <td><a href="/storage/{{$applicant->resume}}"><i class="fa fa-eye" aria-hidden="true"></i> View</a></td>
                             </tr>
                         @endforeach

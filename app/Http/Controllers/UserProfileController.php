@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Job; 
 use App\Models\AppliedJobs;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
@@ -30,16 +31,22 @@ class UserProfileController extends Controller
         $user=  Auth::user(); 
         // dd($user->id);
         // $jobs = AppliedJobs::where('user_id', '=', $user->id)->get();
-        $user->applied_jobs;
-        // dd($user1); 
+        // $user->applied_on_jobs;
+        
         $user->jobs;
         return view('user/my_jobs', compact('user'));
     }
 
     public function applied_jobs()
     {
-        $user=  Auth::user();  
-        return view('user/applied_jobs', ['user' => $user]);
+        $user=  Auth::user();
+        $user->applied_on_jobs;
+
+        $jobs = Job::with('userappliedjobs')->where('user_id', $user->id)->first();
+        $jobs-> userappliedjobs;
+
+        // dd($jobs);
+        return view('user/applied_jobs', ['user' => $user, 'jobs' => $jobs]);
     }
 
     public function saved_jobs()

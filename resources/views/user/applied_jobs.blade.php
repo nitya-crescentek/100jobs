@@ -36,12 +36,8 @@
                                     </tr>
                                 </thead>
                                 <tbody class="border-0">
-                                    @foreach($user->applied_jobs as $get_job)
-                                    @php
-                                        // Fetch the job using the job_id
-                                        $job = App\Models\Job::find($get_job->job_id);
-                                        $user = App\Models\User::find($get_job->user_id);
-                                    @endphp
+                                    @foreach($jobs->userappliedjobs as $job)
+
                                         <tr class="active">
                                             <td>
                                                 <div class="job-name fw-500">{{$job->role}}</div>
