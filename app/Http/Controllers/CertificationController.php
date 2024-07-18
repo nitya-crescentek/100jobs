@@ -59,7 +59,9 @@ class CertificationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cer = Certifications::find($id);
+        // dd($cer);
+        return view('certification.edit', ['certification' => $cer]);
     }
 
     /**
@@ -67,7 +69,19 @@ class CertificationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request;
+
+        $cer = Certifications::find($id);
+
+        $cer -> update([
+            'name' => $data['name'],
+            'institution' => $data['institution'],
+            'grade' => $data['grade'],
+            'year' => $data['year'],
+            'duration' => $data['duration']
+        ]);
+
+        return back()->with('success', 'Updated');
     }
 
     /**
@@ -75,6 +89,9 @@ class CertificationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cer = Certifications::find($id);
+        $cer-> delete();
+
+        return back()->with('success', 'deleted');
     }
 }

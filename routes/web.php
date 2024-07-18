@@ -52,18 +52,27 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     //For educations
-    Route::get('/add-education', [EducationController::class, 'create'])->name('create-education');
-    Route::post('/add-education',[EducationController::class, 'create'])->name('add-education');
+    Route::get('/create-education', [EducationController::class, 'create'])->name('create-education'); 
+    Route::post('/add-education',[EducationController::class, 'store'])->name('add-education');
+    Route::get('/edit-edication/{eduid}', [EducationController::class, 'edit'])->name('edit-education');
+    Route::put('/update-education/{eduid}' , [EducationController::class, 'update'])->name('update-education');
+    Route::get('/delete-education/{eduid}' , [EducationController::class, 'destroy'])->name('delete-education');
 
 
     //For certifications
     Route::post('/add-certification',[CertificationController::class, 'store'])->name('add-certification');
     Route::get('/add-certification',[CertificationController::class, 'create'])->name('create-certification');
+    Route::get('/edit-certification/{cerid}', [CertificationController::class, 'edit'])->name('edit-certification');
+    Route::put('/update-certification/{cerid}' , [CertificationController::class, 'update'])->name('update-certification');
+    Route::get('/delete-certification/{cerid}' , [CertificationController::class, 'destroy'])->name('delete-certification');
 
 
     //For experiences
     Route::post('/add-experience',[ExperienceController::class, 'store'])->name('add-experience');
     Route::get('/add-experience',[ExperienceController::class, 'create'])->name('create-experience');
+    Route::get('/edit-experience/{expid}', [ExperienceController::class, 'edit'])->name('edit-experience');
+    Route::put('/update-experience/{expid}' , [ExperienceController::class, 'update'])->name('update-experience');
+    Route::get('/delete-experience/{expid}' , [ExperienceController::class, 'destroy'])->name('delete-experience');
 
 
     //For jobs

@@ -59,7 +59,9 @@ class ExperienceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $exp = Experiences::find($id);
+
+        return view('experience.edit', ['experience'=> $exp]);
     }
 
     /**
@@ -67,7 +69,19 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request;
+
+        $exp = Experiences::find($id);
+
+        $exp -> update([
+            'company' => $data['company'],
+            'role' => $data['role'],
+            'start' => $data['start'],
+            'end' => $data['end'] ?? 'Working',
+            'skills_gained' => $data['skills_gained']
+        ]);
+
+        return back()->with('success', 'Updated');
     }
 
     /**
@@ -75,6 +89,9 @@ class ExperienceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $exp = Experiences::find($id);
+        $exp -> delete();
+
+        return back()->with('success', 'deleted');
     }
 }

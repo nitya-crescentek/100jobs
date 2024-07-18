@@ -29,8 +29,8 @@
                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></li>
+                                        <li><a class="dropdown-item" href="{{route('edit-education', $education->id)}}"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></li>
+                                        <li><a class="dropdown-item" href="{{route('delete-education', $education->id)}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></li>
                                     </ul>
                                 </div>
                             </td>

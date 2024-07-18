@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Education;
 use App\Models\Educations;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -59,9 +58,12 @@ class EducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(string $id)
     {
+        $education = Educations::find($id);
+        // dd($education);
 
+        return view('education.edit', ['education' => $education]);
     }
 
     /**
@@ -69,7 +71,21 @@ class EducationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request;
+        $education = Educations::find($id);
+
+        $education -> update([
+            'college' => $data['college'],
+            'degree' => $data['degree'],
+            'grades' => $data['grades'],
+            'start' => $data['start'],
+            'end' => $data['end'],
+            'skills_learned' => $data['skills_learned']
+        ]);
+
+        // dd($education);
+
+        return back()->with('success' , 'Updated');
     }
 
     /**
@@ -77,6 +93,10 @@ class EducationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $education = Educations::find($id);
+        // dd($education);
+        $education->delete();
+
+        return back()->with('success', 'Deleted');
     }
 }
