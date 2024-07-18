@@ -37,6 +37,10 @@
                     <input type="text" name="bio" id="bio" placeholder="Bio" class="form-control" value="{{ $user->bio }}">
                 </div>
                 <div class="col-md-6 mb-4">
+                    <label for="key_skills" class="mb-2">Key Skills*</label>
+                    <input type="text" name="key_skills" id="key_skills" placeholder="Key Skills" class="form-control" value="{{ $user->key_skills }}">
+                </div>
+                <div class="col-md-6 mb-4">
                     <label for="city" class="mb-2">City*</label>
                     <input type="text" name="city" id="city" placeholder="City" class="form-control" value="{{ $user->city }}">
                 </div>

@@ -45,17 +45,13 @@
                                 </thead>
                                 <tbody class="border-0">
                                     @foreach($user->jobs as $job)
-                                        @php
-                                             $count = Illuminate\Support\Facades\DB::table('applied_jobs')->where('job_id', $job->id)->count('user_id');
-                                            // dd($count);
-                                        @endphp
                                         <tr class="active">
                                             <td>
                                                 <div class="job-name fw-500">{{$job->role}}</div>
                                             </td>
                                             <td>{{$job->company}}</td>
                                             <td>{{$job->location}}</td>
-                                            <td><a href="{{route('candidates',$job->id)}}">{{$count}} Applicants</a></td>
+                                            <td><a href="{{route('candidates',$job->id)}}">{{count($job->appliedusers)}} Applicants</a></td>
                                             
                                             <td>
                                                 <div class="action-dots">

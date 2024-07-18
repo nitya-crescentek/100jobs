@@ -64,6 +64,7 @@ class UpdateProfileController extends Controller
             'email' => 'required|email|max:255',
             'contact' => 'required|string|max:15',
             'bio' => 'required|string|max:1000',
+            'key_skills' => 'required|string|max:1000',
             'city' => 'required|string|max:255',
             'country' => 'required|string|max:255',
             'resume' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
@@ -82,6 +83,7 @@ class UpdateProfileController extends Controller
         $user->email = $request->input('email');
         $user->contact = $request->input('contact');
         $user->bio = $request->input('bio');
+        $user->key_skills = $request->input('key_skills');
         $user->city = $request->input('city');
         $user->country = $request->input('country');
 

@@ -18,7 +18,6 @@ class Certifications extends Model
         'user_id',
     ];
 
-
     /**
      * Get the user that owns the cer.
      */

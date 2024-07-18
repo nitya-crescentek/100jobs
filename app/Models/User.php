@@ -23,6 +23,7 @@ class User extends Authenticatable
         'contact',
         'avatar',
         'bio',
+        'key_skills',
         'city',
         'country',
         'resume',
@@ -69,15 +70,10 @@ class User extends Authenticatable
         return $this->hasMany(Job::class);
     }
 
-    //What to do
-    public function applied_jobs()
+    // User applied on which jobs pivot table
+    public function applied_on_jobs()
     {
         return $this->hasMany(AppliedJobs::class);
     }
 
-    // public function appliedjobs()
-    // {
-    //     return $this->belongsToMany(Job::class, 'applied_jobs', 'user_id', 'job_id')
-    //                 ->withTimestamps();
-    // }
 }
