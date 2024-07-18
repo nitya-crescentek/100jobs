@@ -46,7 +46,7 @@
                             </div>
                             @if ($user->resume)
                             <div class="col-md-6 mb-1">
-                                <a href="{{ asset('storage/' . $user->resume) }}" target="_blank" class="">View Resume</a>
+                                <a href="{{ asset('storage/' . $user->resume) }}" target="_blank" class="resume"><i class="fa fa-file" aria-hidden="true"></i> View Resume</a>
                             </div>
                             @endif
                         </div>

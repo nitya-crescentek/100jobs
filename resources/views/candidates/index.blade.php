@@ -41,7 +41,7 @@
                                 <td>{{$applicant->contact}}</td>
                                 <td>{{$applicant->email}}</td>
                                 <td>Skills</td>
-                                <td><a href="/storage/{{$applicant->resume}}"><i class="fa fa-eye" aria-hidden="true"></i> View</a></td>
+                                <td><a href="/storage/{{$applicant->resume}}"><i class="fa fa-file" aria-hidden="true"></i> View</a></td>
                             </tr>
                         @endforeach
                     @else
