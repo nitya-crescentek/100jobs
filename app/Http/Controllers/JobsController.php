@@ -72,7 +72,9 @@ class JobsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $job = Job::find($id);
+        $user=  Auth::user(); 
+        return view('jobs.edit' , ['job' => $job, 'user' => $user]);
     }
 
     /**
@@ -80,7 +82,23 @@ class JobsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data =  $request;
+        $job = Job::find($id);
+        
+        $job -> update([
+            'role' => $data['role'],
+            'company' => $data['company'],
+            'company_website' => $data['company_website'],
+            'location' => $data['location'],
+            'job_type' => $data['job_type'],
+            'category' => $data['category'],
+            'description' => $data['description'],
+            'salary' => $data['salary'],
+            'skills' => $data['skills'],
+            'qualification' => $data['qualification']
+        ]);
+
+        return back()->with('message' , 'Updated');
     }
 
     /**
@@ -88,6 +106,10 @@ class JobsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $job = Job::find($id);
+        
+        $job -> delete();
+
+        return back();
     }
 }

@@ -54,6 +54,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="key_skills" class="col-md-4 col-form-label text-md-end">{{ __('Key Skills') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="key_skills" type="text" class="form-control @error('bio') is-invalid @enderror" name="key_skills" value="{{ old('key_skills') }}" required autocomplete="key_skills">
+
+                                @error('key_skills')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="contact" class="col-md-4 col-form-label text-md-end">{{ __('Contact Number') }}</label>
 
                             <div class="col-md-6">

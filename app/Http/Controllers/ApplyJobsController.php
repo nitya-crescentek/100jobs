@@ -35,9 +35,9 @@ class ApplyJobsController extends Controller
                 'job_id' => $job_id
             ]);
         }else{
-            return back()->with('message', 'Apply to another jobs');
+            return back()->with('message', 'Something is wrong');
         }
 
-        return back();
+        return back()->with('message', 'Successfully applied for this job');
     }
 }
