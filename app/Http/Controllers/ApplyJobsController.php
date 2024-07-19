@@ -40,4 +40,16 @@ class ApplyJobsController extends Controller
 
         return back()->with('message', 'Successfully applied for this job');
     }
+
+
+    public function delete(string $id){
+
+        $user = Auth::user();
+        $applied_job = AppliedJobs::where('job_id', $id)->where('user_id', $user->id)->first();
+
+        // dd($applied_job);
+        $applied_job->delete();
+        
+        return back();
+    }
 }

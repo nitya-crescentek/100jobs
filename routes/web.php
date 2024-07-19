@@ -77,10 +77,14 @@ Route::group(['middleware' => 'auth'], function(){
 
     //For jobs
     Route::post('/create-job',[JobsController::class,'store'])->name('create-job');
-    Route::post('/submit-application',[ApplyJobsController::class,'apply'])->name('submit-job-application');
     Route::get('/edit-job/{jobid}',[JobsController::class,'edit'])->name('edit-job');
     Route::put('/update-job/{jobid}',[JobsController::class,'update'])->name('update-job');
     Route::get('/delete-job/{jobid}',[JobsController::class,'destroy'])->name('delete-job');
+
+
+    //For applied jobs
+    Route::post('/submit-application',[ApplyJobsController::class,'apply'])->name('submit-job-application');
+    Route::get('/remove-appliedjob/{jobid}', [ApplyJobsController::class, 'delete'])->name('remove-appliedjob');
 
     
     //Applicants
