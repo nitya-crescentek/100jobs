@@ -105,7 +105,7 @@
                         </div> 
                         <div class="card-footer  p-4">
                             <input type="hidden" name="user_id" value="{{$user->id}}">
-                            <button type="submit" class="btn btn-primary">Post Job</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div> 
                     </form>
                 </div>              

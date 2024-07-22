@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div class="mb-4">
+        {{-- <div class="mb-4">
             <h2>Experience</h2>
             <select name="category" id="category" class="form-control">
                 <option value="">Select Experience</option>
@@ -60,6 +60,6 @@
                 <option value="">10 Years</option>
                 <option value="">10+ Years</option>
             </select>
-        </div>                    
+        </div> --}}
     </div>
 </div>
