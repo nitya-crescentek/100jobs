@@ -70,7 +70,7 @@
                 @foreach($jobs as $job)
                     <div class="col-lg-4 col-xl-3 col-md-6">                
                         <div class="single_catagory">
-                            <a href="jobs.html"><h4 class="pb-2">{{$job->category}}</h4></a>
+                            <a href="{{route('search')}}"><h4 class="pb-2">{{$job->category}}</h4></a>
                             <p class="mb-0"> <span>50</span> Available position</p>
                         </div>                 
                     </div>
@@ -79,7 +79,7 @@
         </div>
     </section>
     
-    <section class="section-3  py-5">
+    {{-- <section class="section-3  py-5">
         <div class="container">
             <h2>Featured Jobs</h2>
             <div class="row pt-5">
@@ -120,7 +120,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     
     <section class="section-3 bg-2 py-5">
         <div class="container">
