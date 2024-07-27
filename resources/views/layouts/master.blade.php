@@ -31,7 +31,9 @@
     <header>
         @include('layouts.partials.header')
     </header>
-    
+
+        @yield('banner')
+
     <main class="container my-4">
         @yield('content')
     </main>
