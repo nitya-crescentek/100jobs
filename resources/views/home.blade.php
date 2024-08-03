@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('title')
+    Home
+@endsection
 
 @section('banner')
     <section class="section-0 lazy d-flex bg-image-style dark align-items-center "   class="" data-bg="storage/images/banner5.jpg">
@@ -71,12 +74,14 @@
         <div class="container">
             <h2>Popular Categories</h2>
             <div class="row pt-5">
-                @foreach($jobs as $job)
-                    <div class="col-lg-4 col-xl-3 col-md-6">                
+                @foreach($categories as $category)
+                    <div class="col-lg-4 col-xl-3 col-md-6">
                         <div class="single_catagory">
-                            <a href="{{route('search')}}"><h4 class="pb-2">{{$job->category}}</h4></a>
-                            <p class="mb-0"> <span>50</span> Available position</p>
-                        </div>                 
+                            <a href="{{ route('search') }}">
+                                <h4 class="pb-2">{{ $category->category }}</h4>
+                            </a>
+                            <p class="mb-0"> <span>{{ $category->job_count }}</span> Available positions</p>
+                        </div>
                     </div>
                 @endforeach
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Job; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,8 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $categories = Job::select('category', DB::raw('count(*) as job_count'))
+                    ->groupBy('category')
+                    ->get();
+
+        // Fetch all jobs (if needed elsewhere in the view)
         $jobs = Job::all();
         
-        return view('home', ['jobs' => $jobs]);
+        return view('home', ['jobs' => $jobs, 'categories' => $categories]);
     }
 }
