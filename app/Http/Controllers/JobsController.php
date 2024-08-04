@@ -118,4 +118,30 @@ class JobsController extends Controller
 
         return back();
     }
+
+    public function search_job(Request $request)
+    {
+        $query = Job::query();
+
+        if ($request->filled('keywords')) {
+            $query->where('role', 'like', '%' . $request->keywords . '%');
+        }
+    
+        if ($request->filled('location')) {
+            $query->where('location', 'like', '%' . $request->location . '%');
+        }
+    
+        if ($request->filled('category')) {
+            $query->where('category', $request->category);
+        }
+    
+        if ($request->filled('job_type')) {
+            $query->whereIn('job_type', $request->job_type);
+        }
+
+        $jobs = $query->get();
+    
+        return view('components.job_list', ['jobs' => $jobs]);
+    }
+
 }
