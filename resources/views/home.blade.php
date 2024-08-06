@@ -1,5 +1,24 @@
 @extends('layouts.master')
 
+@section('title')
+    Home
+@endsection
+
+@section('banner')
+    <section class="section-0 lazy d-flex bg-image-style dark align-items-center "   class="" data-bg="storage/images/banner5.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-xl-8">
+                    <h1>Find your dream job</h1>
+                    <p>Thounsands of jobs available.</p>
+                    <div class="banner-btn mt-5"><a href="{{route('jobs')}}" class="btn btn-primary mb-4 mb-sm-0">Explore Now</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
+
 @section('content')
 
     {{-- <div class="row justify-content-center">
@@ -19,18 +38,6 @@
             </div>
         </div>
     </div> --}}
-
-    <section class="section-0 lazy d-flex bg-image-style dark align-items-center "   class="" data-bg="storage/images/banner5.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-xl-8">
-                    <h1>Find your dream job</h1>
-                    <p>Thounsands of jobs available.</p>
-                    <div class="banner-btn mt-5"><a href="{{route('jobs')}}" class="btn btn-primary mb-4 mb-sm-0">Explore Now</a></div>
-                </div>
-            </div>
-        </div>
-    </section>
     
     <section class="section-1 py-5 "> 
         <div class="container">
@@ -67,19 +74,21 @@
         <div class="container">
             <h2>Popular Categories</h2>
             <div class="row pt-5">
-                @foreach($jobs as $job)
-                    <div class="col-lg-4 col-xl-3 col-md-6">                
+                @foreach($categories as $category)
+                    <div class="col-lg-4 col-xl-3 col-md-6">
                         <div class="single_catagory">
-                            <a href="jobs.html"><h4 class="pb-2">{{$job->category}}</h4></a>
-                            <p class="mb-0"> <span>50</span> Available position</p>
-                        </div>                 
+                            <a href="{{ route('search') }}">
+                                <h4 class="pb-2">{{ $category->category }}</h4>
+                            </a>
+                            <p class="mb-0"> <span>{{ $category->job_count }}</span> Available positions</p>
+                        </div>
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
     
-    <section class="section-3  py-5">
+    {{-- <section class="section-3  py-5">
         <div class="container">
             <h2>Featured Jobs</h2>
             <div class="row pt-5">
@@ -120,7 +129,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     
     <section class="section-3 bg-2 py-5">
         <div class="container">

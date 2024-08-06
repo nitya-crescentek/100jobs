@@ -22,13 +22,16 @@ class JobsController extends Controller
         return view('jobs/index', ['jobs' => $jobs]);
     }
 
+    
     /**
-     * Show the form for creating a new resource.
+     * Show the search results.
      */
-    public function create()
+    public function search()
     {
-        //
+        $jobs=Job::all(); 
+        return view('jobs.search_result', ['jobs' => $jobs]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -54,6 +57,7 @@ class JobsController extends Controller
         return redirect(route('profile'));
     }
 
+
     /**
      * Display the specified resource.
      */
@@ -67,6 +71,7 @@ class JobsController extends Controller
         return view('jobs/single_job',['job' => $job, 'employer' => $employer]);
     }
 
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -76,6 +81,7 @@ class JobsController extends Controller
         $user=  Auth::user(); 
         return view('jobs.edit' , ['job' => $job, 'user' => $user]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -101,15 +107,41 @@ class JobsController extends Controller
         return back()->with('message' , 'Updated');
     }
 
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         $job = Job::find($id);
-        
         $job -> delete();
 
         return back();
     }
+
+    public function search_job(Request $request)
+    {
+        $query = Job::query();
+
+        if ($request->filled('keywords')) {
+            $query->where('role', 'like', '%' . $request->keywords . '%');
+        }
+    
+        if ($request->filled('location')) {
+            $query->where('location', 'like', '%' . $request->location . '%');
+        }
+    
+        if ($request->filled('category')) {
+            $query->where('category', $request->category);
+        }
+    
+        if ($request->filled('job_type')) {
+            $query->whereIn('job_type', $request->job_type);
+        }
+
+        $jobs = $query->get();
+    
+        return view('components.job_list', ['jobs' => $jobs]);
+    }
+
 }

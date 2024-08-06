@@ -10,6 +10,7 @@ use App\Http\Controllers\UpdateProfileController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\CandidatesController;
+use App\Http\Controllers\JobCategoryController;
 use App\Models\User;
 use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
@@ -27,12 +28,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 Auth::routes();
 
 
+//Jobs
 Route::get('/all-jobs',[JobsController::class, 'index'])->name('jobs');
+Route::get('/search-result', [JobsController::class, 'search_job'])->name('search');
 Route::get('/job/{id}',[JobsController::class, 'show'])->name('single-job'); 
+
+
+//Jobs Category
+Route::get('/category/{name}',[JobCategoryController::class, 'category_page'])->name('category');
+
 
 
 Route::group(['middleware' => 'auth'], function(){

@@ -16,7 +16,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!--Load JS -->
-    @vite(['resources/js/jquery-3.6.0.min.js'])
+    {{-- @vite(['resources/js/jquery-3.6.0.min.js']) --}}
     @vite(['resources/js/bootstrap.bundle.5.1.3.min.js'])
     @vite(['resources/js/instantpages.5.1.0.min.js'])
     @vite(['resources/js/lazyload.17.6.0.min.js'])
@@ -31,7 +31,9 @@
     <header>
         @include('layouts.partials.header')
     </header>
-    
+
+        @yield('banner')
+
     <main class="container my-4">
         @yield('content')
     </main>
@@ -40,7 +42,11 @@
     @include('layouts.partials.footer')
     
 
-    @yield('scripts')
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    @yield('scripts')
+
 </body>
 </html>
