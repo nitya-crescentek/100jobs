@@ -1,20 +1,21 @@
 @extends('layouts.master')
 
 @section('content')
+
 <section class="section-3 py-5 bg-2">
     <div class="container">     
         <div class="row">
+
             <div class="col-6 col-md-10">
-                <h2>Jobs:</h2>  
+                <h2>Find Jobs:</h2>  
             </div>
+
             <div class="col-6 col-md-2">
                 <div class="align-end">
-                    <select name="sort" id="sort" class="form-control">
-                        <option value="">Latest</option>
-                        <option value="">Oldest</option>
-                    </select>
+                    @include('components.job_sort_form')
                 </div>
             </div>
+
         </div>
 
         <div class="row pt-5">
@@ -45,7 +46,7 @@
             $.ajax({
                 url: '{{ route("search") }}',
                 type: 'GET',
-                data: $('#search-form').serialize(),
+                data: $('#search-form').serialize() + '&sort=' + $('#sort').val(),
                 success: function(response) {
                     $('#job-results').fadeOut(200, function() {
                         $(this).html(response).fadeIn(200);
@@ -57,10 +58,13 @@
             });
         }
 
-        $('#search-form input, #search-form select').on('input', function() {
+        $('#search-form input, #search-form select, #sort').on('input change', function() {
             clearTimeout(timer);
             timer = setTimeout(fetchResults, 400);
         });
+
+        // Initial fetch to load jobs when the page loads
+        fetchResults();
     });
 </script>
 @endsection

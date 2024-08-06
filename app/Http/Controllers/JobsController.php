@@ -16,9 +16,8 @@ class JobsController extends Controller
      */
     public function index()
     {
-        // $jobs=Job::where('id', '=', 2)->get();
         $jobs=Job::all(); 
-        // dd($jobs);
+        
         return view('jobs/index', ['jobs' => $jobs]);
     }
 
@@ -66,7 +65,6 @@ class JobsController extends Controller
         $job = Job::find($id);
         // dd($job);
         $employer = User::find($job->user_id);
-        // dd($employer);
 
         return view('jobs/single_job',['job' => $job, 'employer' => $employer]);
     }
@@ -119,29 +117,39 @@ class JobsController extends Controller
         return back();
     }
 
+    
     public function search_job(Request $request)
     {
         $query = Job::query();
 
-        if ($request->filled('keywords')) {
+        if ($request->has('keywords') && $request->keywords != '') {
             $query->where('role', 'like', '%' . $request->keywords . '%');
         }
-    
-        if ($request->filled('location')) {
+
+        if ($request->has('location') && $request->location != '') {
             $query->where('location', 'like', '%' . $request->location . '%');
         }
-    
-        if ($request->filled('category')) {
+
+        if ($request->has('category') && $request->category != '') {
             $query->where('category', $request->category);
         }
-    
-        if ($request->filled('job_type')) {
+
+        if ($request->has('job_type') && is_array($request->job_type)) {
             $query->whereIn('job_type', $request->job_type);
         }
 
+        if ($request->has('sort') && $request->sort != '') {
+            if ($request->sort == 'Latest') {
+                $query->orderBy('created_at', 'desc');
+            } else if ($request->sort == 'Oldest') {
+                $query->orderBy('created_at', 'asc');
+            }
+        }
+
         $jobs = $query->get();
-    
+
         return view('components.job_list', ['jobs' => $jobs]);
     }
+
 
 }
