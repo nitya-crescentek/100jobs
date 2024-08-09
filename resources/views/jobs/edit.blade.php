@@ -43,12 +43,7 @@
                                 </div>
                                 <div class="col-md-6  mb-4">
                                     <label for="" class="mb-2">Category<span class="req">*</span></label>
-                                    <select name="category" id="category" class="form-select">
-                                        <option {{$job->category == 'Engineering'  ? 'selected' : ''}}>Engineering</option>
-                                        <option {{$job->category == 'Software Developement'  ? 'selected' : ''}}>Software Developement</option>
-                                        <option {{$job->category == 'Information Technology'  ? 'selected' : ''}}>Information Technology</option>
-                                        <option {{$job->category == 'Web Developement'  ? 'selected' : ''}}>Web Developement</option>
-                                    </select>
+                                    @include('components.job_category_select')
                                 </div>
                             </div>
                             

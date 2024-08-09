@@ -50,20 +50,13 @@
                         <input type="text" class="form-control" name="search" id="search" placeholder="Location">
                     </div>
                     <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                        <select name="category" id="category" class="form-control">
-                            <option value="">Select a Category</option>
-                            <option value="">Engineering</option>
-                            <option value="">Accountant</option>
-                            <option value="">Information Technology</option>
-                            <option value="">Fashion designing</option>
-                        </select>
+                        @include('components.job_category_select')
                     </div>
                     
                     <div class=" col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
                         <div class="d-grid gap-2">
                             <a href="jobs.html" class="btn btn-primary btn-block">Search</a>
-                        </div>
-                        
+                        </div>                        
                     </div>
                 </div>            
             </div>
