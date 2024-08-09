@@ -63,8 +63,6 @@
             timer = setTimeout(fetchResults, 400);
         });
 
-        // Initial fetch to load jobs when the page loads
-        fetchResults();
     });
 </script>
 @endsection

@@ -16,7 +16,7 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $jobs=Job::all(); 
+        $jobs = Job::orderBy('created_at', 'desc')->get();
         
         return view('jobs/index', ['jobs' => $jobs]);
     }
