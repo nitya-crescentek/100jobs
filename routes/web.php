@@ -34,6 +34,7 @@ Auth::routes();
 //Jobs
 Route::get('/all-jobs',[JobsController::class, 'index'])->name('jobs');
 Route::get('/search-result', [JobsController::class, 'search_job'])->name('search');
+Route::get('/home-search', [JobsController::class, 'home_search_job'])->name('home-search');
 Route::get('/job/{id}',[JobsController::class, 'show'])->name('single-job'); 
 
 
