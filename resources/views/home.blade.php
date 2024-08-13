@@ -20,48 +20,49 @@
 
 
 @section('content')
-
-    {{-- <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+    
+    <section class="section-1 py-5"> 
+        <div class="container">
+            <form id="home-search-form" action="{{ route('home-search') }}" method="GET">
+                <div class="card border-0 shadow p-5">
+                    <div class="row">
+                        <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
+                            <input type="text" class="form-control" name="keywords" id="search-keywords" placeholder="Keywords">
                         </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                        <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
+                            <input type="text" class="form-control" name="location" id="search-location" placeholder="Location">
+                        </div>
+                        <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
+                            <select name="category" id="category" class="form-select">
+                                <option value="">Select a Category</option>
+                                <option value="Software Engineering">Software Engineering</option>
+                                <option value="Software Development">Software Development</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="System Engineer">System Engineer</option>
+                                <option value="DevOps">DevOps</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-block">Search</button>
+                            </div>                        
+                        </div>
+                    </div>            
+                </div>
+            </form>
+        </div>
+        
+        <div class="section-results"> 
+            <div class="container">
+                <div id="search-results" class="card border-0 shadow" style="display:none">
+                    <!-- Search results will be injected here -->
                 </div>
             </div>
         </div>
-    </div> --}}
-    
-    <section class="section-1 py-5 "> 
-        <div class="container">
-            <div class="card border-0 shadow p-5">
-                <div class="row">
-                    <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                        <input type="text" class="form-control" name="search" id="search" placeholder="Keywords">
-                    </div>
-                    <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                        <input type="text" class="form-control" name="search" id="search" placeholder="Location">
-                    </div>
-                    <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                        @include('components.job_category_select')
-                    </div>
-                    
-                    <div class=" col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
-                        <div class="d-grid gap-2">
-                            <a href="jobs.html" class="btn btn-primary btn-block">Search</a>
-                        </div>                        
-                    </div>
-                </div>            
-            </div>
-        </div>
     </section>
+    
     
     <section class="section-2 bg-2 py-5">
         <div class="container">
@@ -166,4 +167,27 @@
         </div>
     </section>
    
+@endsection
+
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('#home-search-form').on('submit', function(e) {
+            e.preventDefault();
+            
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'GET',
+                data: $(this).serialize(), 
+                success: function(response) {
+                    $('#search-results').html(response).show();
+                },
+                error: function(xhr) {
+                    $('#search-results').html('<p>An error occurred while processing your request.</p>').show();
+                }
+            });
+        });
+    });
+</script>
 @endsection

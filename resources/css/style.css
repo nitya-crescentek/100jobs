@@ -10023,3 +10023,25 @@ footer .nav-link {
   content: '';
 }
 /* '' */
+
+
+
+div#search-results {
+  background: white;
+  margin-top: -35px;
+  z-index: 99;
+  padding: 10px 30px 20px 30px;
+  font-size: 20px;
+}
+
+.job-item.results h5:hover {
+    background-color: #eaeaea;
+}
+
+.job-item.results h5 {
+  padding: 5px 5px;
+}
+
+.job-item.view-alljobs {
+  text-align: center;
+}
