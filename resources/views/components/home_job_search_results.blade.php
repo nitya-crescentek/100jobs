@@ -7,13 +7,13 @@
         </div>
     @endforeach
     <div class="job-item view-alljobs">
-        <a href={{route('jobs')}}><p>View All Vacancies</p></a>
+        <a href={{route('jobs')}}>View All Vacancies</a>
     </div>
 @else
     <div class="job-item results none">
-        <p>No jobs found.</p>
+        <h5>No jobs found.</h5>
     </div>
     <div class="job-item view-alljobs">
-        <a href={{route('jobs')}}><p>View All Vacancies</p></a>
+        <a href={{route('jobs')}}>View All Vacancies</a>
     </div>
 @endif

@@ -54,9 +54,9 @@
             </form>
         </div>
         
-        <div class="section-results"> 
+        <div class="section-results" id="section-results"> 
             <div class="container">
-                <div id="search-results" class="card border-0 shadow" style="display:none">
+                <div id="search-results" class="card border-0" style="display:none">
                     <!-- Search results will be injected here -->
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 @foreach($categories as $category)
                     <div class="col-lg-4 col-xl-3 col-md-6">
                         <div class="single_catagory">
-                            <a href="{{ route('search') }}">
+                            <a href="{{ route('jobs') }}">
                                 <h4 class="pb-2">{{ $category->category }}</h4>
                             </a>
                             <p class="mb-0"> <span>{{ $category->job_count }}</span> Available positions</p>
@@ -84,41 +84,11 @@
     
     {{-- <section class="section-3  py-5">
         <div class="container">
-            <h2>Featured Jobs</h2>
+            <h2>New Jobs</h2>
             <div class="row pt-5">
                 <div class="job_listing_area">                    
                     <div class="job_lists">
-                        <div class="row">
-                            @foreach($jobs as $job)
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">{{$job->role}}</h3>
-                                        <p>{{ Str::words($job->description, 15, '...') }}</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">{{$job->location}}</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">{{$job->job_type}}</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-inr"></i></span>
-                                                <span class="ps-1">{{$job->salary}}</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="d-grid mt-3">
-                                            <a href="{{route('single-job',$job->id)}}" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach 
-                                                     
-                        </div>
+                        @include('components.job_list')
                     </div>
                 </div>
             </div>
@@ -127,40 +97,11 @@
     
     <section class="section-3 bg-2 py-5">
         <div class="container">
-            <h2>Latest Jobs</h2>
+            <h2>Featured Jobs</h2>
             <div class="row pt-5">
                 <div class="job_listing_area">                    
                     <div class="job_lists">
-                        <div class="row">
-                            @foreach($jobs as $job)
-                            <div class="col-md-4">
-                                <div class="card border-0 p-3 shadow mb-4">
-                                    <div class="card-body">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">{{$job->role}}</h3>
-                                        <p>{{ Str::words($job->description, 15, '...') }}</p>
-                                        <div class="bg-light p-3 border">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">{{$job->location}}</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">{{$job->job_type}}</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-inr"></i></span>
-                                                <span class="ps-1">{{$job->salary}}</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="d-grid mt-3">
-                                            <a href="{{route('single-job',$job->id)}}" class="btn btn-primary btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach                                                   
-                        </div>
+                        @include('components.job_list')                       
                     </div>
                 </div>
             </div>
@@ -175,11 +116,15 @@
     $(document).ready(function() {
         $('#home-search-form').on('submit', function(e) {
             e.preventDefault();
-            
+
+            // Add loader SVG before making the AJAX request
+            var loaderSvg = '<div class="text-center py-3 job-search"><svg class="loader" width="40px" height="40px" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg></div>';
+            $('#search-results').html(loaderSvg).show();
+
             $.ajax({
                 url: $(this).attr('action'),
                 method: 'GET',
-                data: $(this).serialize(), 
+                data: $(this).serialize(),
                 success: function(response) {
                     $('#search-results').html(response).show();
                 },
@@ -187,6 +132,15 @@
                     $('#search-results').html('<p>An error occurred while processing your request.</p>').show();
                 }
             });
+        });
+
+        // Close the search results div when clicking outside of the container
+        $(document).mouseup(function(e) {
+            var container = $("#search-results");
+
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                $('#search-results').hide();
+            }
         });
     });
 </script>
