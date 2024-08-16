@@ -54,9 +54,9 @@
             </form>
         </div>
         
-        <div class="section-results"> 
+        <div class="section-results" id="section-results"> 
             <div class="container">
-                <div id="search-results" class="card border-0 shadow" style="display:none">
+                <div id="search-results" class="card border-0" style="display:none">
                     <!-- Search results will be injected here -->
                 </div>
             </div>
@@ -175,11 +175,15 @@
     $(document).ready(function() {
         $('#home-search-form').on('submit', function(e) {
             e.preventDefault();
-            
+
+            // Add loader SVG before making the AJAX request
+            var loaderSvg = '<div class="text-center py-3 job-search"><svg class="loader" width="40px" height="40px" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg></div>';
+            $('#search-results').html(loaderSvg).show();
+
             $.ajax({
                 url: $(this).attr('action'),
                 method: 'GET',
-                data: $(this).serialize(), 
+                data: $(this).serialize(),
                 success: function(response) {
                     $('#search-results').html(response).show();
                 },
@@ -187,6 +191,15 @@
                     $('#search-results').html('<p>An error occurred while processing your request.</p>').show();
                 }
             });
+        });
+
+        // Close the search results div when clicking outside of the container
+        $(document).mouseup(function(e) {
+            var container = $("#search-results");
+
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                $('#search-results').hide();
+            }
         });
     });
 </script>

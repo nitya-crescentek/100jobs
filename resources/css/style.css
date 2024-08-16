@@ -10025,23 +10025,70 @@ footer .nav-link {
 /* '' */
 
 
+/* Job search form */
 
 div#search-results {
   background: white;
-  margin-top: -35px;
-  z-index: 99;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
   padding: 10px 30px 20px 30px;
   font-size: 20px;
+  width: 90%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.section-results {
+  position: relative;
+}
+
+.section-results .container {
+  display: flex;
+  justify-content: center;
 }
 
 .job-item.results h5:hover {
-    background-color: #eaeaea;
+  background-color: #fafafa;
 }
 
 .job-item.results h5 {
   padding: 5px 5px;
+  font-size: 20px;
+  margin: 2px 0px;
 }
 
 .job-item.view-alljobs {
   text-align: center;
+}
+
+
+/* loader */
+.job-search .loader {
+  animation: rotate 2s linear infinite;
+}
+.job-search .path {
+  stroke: #007bff;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+@keyframes rotate {
+  100% {
+      transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+  }
+  50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+  }
+  100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+  }
 }
