@@ -31,23 +31,23 @@
     <div class="main-bd">
       <div class="left-side">
         <div class="profile-side">
-          <p class="mobile-no"><i class="fa fa-phone"></i>{{$user->contact}}</p>
-          <p class="user-mail"><i class="fa fa-envelope"></i> {{$user->email}}</p>
-          <div class="user-bio">
+            <p class="mobile-no"><i class="fa fa-phone"></i>{{$user->contact}}</p>
+            <p class="user-mail"><i class="fa fa-envelope"></i> {{$user->email}}</p>
+            <div class="user-bio">
             <h3>Bio</h3>
             <p class="bio">
                 {{$user->bio}}
             </p>
-          </div>
+        </div>
 
-          <div class="social-menu">
-                <ul>
-                    <li><a href="https://github.com/sanketbodke" target="blank"><i class="fab fa-github"></i></i></a></li>
-                    <li><a href="https://www.instagram.com/imsanketbodke/" target="blank"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/sanket-bodake-995b5b205/" target="blank"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="https://codepen.io/sanketbodke"><i class="fab fa-codepen" target="blank"></i></a></li>
-                </ul>
-            </div>
+        <div class="social-menu">
+            <ul>
+                <li><a href="" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li><a href="" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="" target="_blank"><i class="fab fa-google"></i></a></li>
+            </ul>
+        </div>
         </div>
   
       </div>
@@ -89,50 +89,5 @@
 @endsection
 
 @section('scripts')
-<script>
-    $(".nav ul li").click(function() {
-  $(this)
-    .addClass("active")
-    .siblings()
-    .removeClass("active");
-});
-
-const tabBtn = document.querySelectorAll(".nav ul li");
-const tab = document.querySelectorAll(".tab");
-
-function tabs(panelIndex) {
-  tab.forEach(function(node) {
-    node.style.display = "none";
-  });
-  tab[panelIndex].style.display = "block";
-}
-tabs(0);
-
-let bio = document.querySelector(".bio");
-const bioMore = document.querySelector("#see-more-bio");
-const bioLength = bio.innerText.length;
-
-function bioText() {
-  bio.oldText = bio.innerText;
-
-  bio.innerText = bio.innerText.substring(0, 100) + "...";
-  bio.innerHTML += `<span onclick='addLength()' id='see-more-bio'>See More</span>`;
-}
-//   console.log(bio.innerText)
-
-bioText();
-
-function addLength() {
-  bio.innerText = bio.oldText;
-  bio.innerHTML +=
-    "&nbsp;" + `<span onclick='bioText()' id='see-less-bio'>See Less</span>`;
-  document.getElementById("see-less-bio").addEventListener("click", () => {
-    document.getElementById("see-less-bio").style.display = "none";
-  });
-}
-if (document.querySelector(".alert-message").innerText > 9) {
-  document.querySelector(".alert-message").style.fontSize = ".7rem";
-}
-</script>
-<script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
+    @vite(['resources/js/public-profile.js'])
 @endsection
