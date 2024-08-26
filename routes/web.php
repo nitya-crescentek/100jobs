@@ -9,6 +9,7 @@ use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UpdateProfileController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\User\PublicProfileController;
 use App\Http\Controllers\CandidatesController;
 use App\Http\Controllers\JobCategoryController;
 use App\Models\User;
@@ -41,6 +42,9 @@ Route::get('/job/{id}',[JobsController::class, 'show'])->name('single-job');
 //Jobs Category
 Route::get('/category/{name}',[JobCategoryController::class, 'category_page'])->name('category');
 
+
+//Public user profile
+Route::get('/user/{id}', [PublicProfileController::class, 'index'])->name('public-profile');
 
 
 Route::group(['middleware' => 'auth'], function(){

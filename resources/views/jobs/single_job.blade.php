@@ -67,8 +67,12 @@
                                   <img src="{{route('home')}}/storage/{{$employer->avatar}}" style="width:50px; border-radius:50%;">  
                                 </div>
                                 <div class="employer-details col-md-10" style="margin-left:10px;line-height:0.8em">
-                                  <div class="employer-name" style="font-weight:600">{{$employer->name}}</div>
-                                  <div class="employer-bio"><p style="margin:0; line-height:1.2em;">{{$employer->bio}}</p></div>
+                                    <div class="employer-name" style="font-weight:600">
+                                        <a href="{{route('public-profile', $employer->id)}}" target="_blank">{{$employer->name}}</a>
+                                    </div>
+                                    <div class="employer-bio">
+                                        <p style="margin:0; line-height:1.2em;">{{$employer->bio}}</p>
+                                    </div>
                                 </div>
                             </div>                              
                         </div>
