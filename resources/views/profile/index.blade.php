@@ -52,7 +52,7 @@
                 </div>
         
             </div>
-            <div class="right-side col-lg-9">
+            <div class="right-side col-lg-8">
         
                 <div class="nav">
                     <ul>
