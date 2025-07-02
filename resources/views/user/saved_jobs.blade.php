@@ -39,7 +39,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="border-0">
-                                    <tr class="active">
+                                    {{-- <tr class="active">
                                         <td>
                                             <div class="job-name fw-500">Web Developer</div>
                                             <div class="info1">Fulltime . Noida</div>
@@ -126,7 +126,7 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>

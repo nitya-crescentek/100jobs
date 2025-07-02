@@ -21,6 +21,14 @@ class JobsController extends Controller
         return view('jobs/index', ['jobs' => $jobs]);
     }
 
+
+    public function get_all_jobs()
+    {
+        $jobs = Job::orderBy('created_at', 'desc')->get();
+        
+        return $jobs;
+    }
+
     
     /**
      * Show the search results.

@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="border-0">
-                                    @foreach($jobs->userappliedjobs as $job)
+                                    @foreach($jobs as $job)
 
                                         <tr class="active">
                                             <td>
