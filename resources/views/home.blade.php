@@ -142,6 +142,43 @@
                 $('#search-results').hide();
             }
         });
+
+        function searchJobs() {
+            var keywords = $('#search-keywords').val();
+            var location = $('#search-location').val();
+            var category = $('#category').val();
+
+            // Add loader SVG before making the AJAX request
+            var loaderSvg = '<div class="text-center py-3 job-search"><svg class="loader" width="40px" height="40px" viewBox="0 0 50 50"><circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle></svg></div>';
+            $('#search-results').html(loaderSvg).show();
+
+            $.ajax({
+                url: '{{ route('home-search') }}',
+                method: 'GET',
+                data: {
+                    keywords: keywords,
+                    location: location,
+                    category: category
+                },
+                success: function(response) {
+                    $('#search-results').html(response).show();
+                },
+                error: function(xhr) {
+                    $('#search-results').html('<p>An error occurred while processing your request.</p>').show();
+                }
+            });
+        }
+
+        // Trigger search on form submission
+        $('#search-keywords,#search-location').on('keyup', function(e) {
+            searchJobs();   
+        });
+
+        // Trigger search on category change
+        $('#category').on('change', function() {
+            searchJobs(); 
+        });
+
     });
 </script>
 @endsection
