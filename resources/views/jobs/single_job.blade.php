@@ -83,7 +83,7 @@ Job Details - {{$job->role}}
 
                         <div class="border-bottom"></div>
                         <div class="pt-3 text-end">
-                            <a href="#" class="btn btn-secondary">Save</a>
+                            <button data-bs-toggle="modal" data-bs-target="#save-the-job" type="button" class="btn btn-secondary">Save</button>
                             <button data-bs-toggle="modal" data-bs-target="#apply-for-job" type="button" class="btn btn-primary">Apply</button>
                         </div>
                     </div>
@@ -124,5 +124,6 @@ Job Details - {{$job->role}}
 </section>
 
 @include('components.apply_for_job')
+@include('components.save_the_job')
 
 @endsection

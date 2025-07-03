@@ -52,7 +52,11 @@ class UserProfileController extends Controller
     public function saved_jobs()
     {
         $user=  Auth::user(); 
-        return view('user/saved_jobs', ['user' => $user]);
+        $jobIds = $user->saved_jobs->pluck('job_id');
+        $jobs = Job::whereIn('id', $jobIds)->get();
+        $jobs = $jobs->isEmpty() ? 'null' : $jobs;
+
+        return view('user/saved_jobs', ['user' => $user, 'jobs' => $jobs]);
     }
 
 }
